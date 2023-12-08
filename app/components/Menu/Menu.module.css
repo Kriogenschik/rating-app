@@ -41,7 +41,7 @@
 display: none;
 }
 
-.secondLevelBlockOpened:last-child {
+.secondLevelBlockOpened {
   margin-bottom: 20px;
   display: block;
 }
