@@ -4,8 +4,6 @@ import styles from "./Menu.module.css";
 import cn from "classnames";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { getMenu } from "@/api/menu";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 interface MenuSecondLevelProps {

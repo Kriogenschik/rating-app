@@ -1,14 +1,26 @@
-import { Card, Htag, Tag } from "@/components";
+import { Advent, Card, Htag, PTag, Tag } from "@/components";
 import { TopPageComponentProps } from "./TopPageComponent.props";
 
 import styles from "./TopPageComponent.module.css";
 import { HHData } from "@/components/HHData/HHData";
+import { Sort } from "@/components/Sort/Sort";
+import { SortEnum } from "@/components/Sort/Sort.props";
+import { useReducer, useState } from "react";
+import { sortReducer } from "./sort.reducer";
+import { Products } from "@/components/Products/Products";
 
 export const TopPageComponent = ({
   page,
   products,
   firstCategory,
 }: TopPageComponentProps): JSX.Element => {
+  // const [{products: sortedProducts, sort}, dispatchSort] = useReducer(sortReducer, {products, sort: SortEnum.Rating});
+
+  // const setSort = async (sort: SortEnum) => {
+  //   "use server";
+  //   dispatchSort({type: sort})
+
+  // }
   return (
     <div className={styles.wrapper}>
       <div className={styles.title}>
@@ -18,11 +30,16 @@ export const TopPageComponent = ({
             {products.length}
           </Tag>
         )}
-        <span>Sorting</span>
+
+        <Sort
+          // sort={sort} setSort={setSort}
+          products={products}
+        />
       </div>
-      <div>
-        {products && products.map((p) => <div key={p._id}>{p.title}</div>)}
-      </div>
+      {/* <div>
+        {sortedProducts && sortedProducts.map((p) => <div key={p._id}>{p.title}</div>)}
+      </div> */}
+      <Products products={products} />
       <div className={styles.hhtitle}>
         <Htag tag="h2">Vacancies - {page.category}</Htag>
         {products && (
@@ -31,7 +48,25 @@ export const TopPageComponent = ({
           </Tag>
         )}
       </div>
-      <HHData {...page.hh!}/>
+      {page.hh && <HHData {...page.hh} />}
+      {page.advantages && page.advantages.length > 0 && (
+        <>
+          <Htag tag="h2">Advantages</Htag>
+          <Advent advantages={page.advantages} />
+        </>
+      )}
+      {page.seoText && (
+        <div
+          className={styles.seo}
+          dangerouslySetInnerHTML={{ __html: page.seoText }}
+        />
+      )}
+      <Htag tag="h2">Acquired skills</Htag>
+      {page.tags.map((t) => (
+        <Tag key={t} color="primary">
+          {t}
+        </Tag>
+      ))}
     </div>
   );
 };
