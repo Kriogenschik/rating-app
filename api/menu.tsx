@@ -5,9 +5,6 @@ import { MenuItem } from "@/interfaces/menu.iterface";
 export async function getMenu(): Promise<MenuItem[]> {
   const res = await fetch(API.topPage.find, {
     method: "GET",
-    // body: JSON.stringify({
-    //   firstCategory,
-    // }),
     headers: new Headers({'content-type': 'application/json'})
   });
   return res.json();

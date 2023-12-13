@@ -1,12 +1,9 @@
-import { Advent, Card, Htag, PTag, Tag } from "@/components";
+import { Advent, Htag, Tag } from "@/components";
 import { TopPageComponentProps } from "./TopPageComponent.props";
 
 import styles from "./TopPageComponent.module.css";
 import { HHData } from "@/components/HHData/HHData";
 import { Sort } from "@/components/Sort/Sort";
-import { SortEnum } from "@/components/Sort/Sort.props";
-import { useReducer, useState } from "react";
-import { sortReducer } from "./sort.reducer";
 import { Products } from "@/components/Products/Products";
 
 export const TopPageComponent = ({
@@ -14,13 +11,7 @@ export const TopPageComponent = ({
   products,
   firstCategory,
 }: TopPageComponentProps): JSX.Element => {
-  // const [{products: sortedProducts, sort}, dispatchSort] = useReducer(sortReducer, {products, sort: SortEnum.Rating});
 
-  // const setSort = async (sort: SortEnum) => {
-  //   "use server";
-  //   dispatchSort({type: sort})
-
-  // }
   return (
     <div className={styles.wrapper}>
       <div className={styles.title}>
@@ -30,15 +21,10 @@ export const TopPageComponent = ({
             {products.length}
           </Tag>
         )}
-
         <Sort
-          // sort={sort} setSort={setSort}
           products={products}
         />
       </div>
-      {/* <div>
-        {sortedProducts && sortedProducts.map((p) => <div key={p._id}>{p.title}</div>)}
-      </div> */}
       <Products products={products} />
       <div className={styles.hhtitle}>
         <Htag tag="h2">Vacancies - {page.category}</Htag>

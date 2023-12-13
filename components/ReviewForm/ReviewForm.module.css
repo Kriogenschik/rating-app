@@ -39,6 +39,18 @@
   margin-top: 20px;
 }
 
+.error {
+  background: #ffcfc5;
+  position: relative;
+  padding: 20px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.error .close path{
+  stroke: var(--red)
+}
+
 .successTitle {
 font-weight: 700;
 }

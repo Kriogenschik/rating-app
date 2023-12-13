@@ -203,18 +203,14 @@
   }
 }
 
-.closed {
-  overflow: hidden;
-  max-height: 0;
-  padding: 0;
-}
-.opened {
-  max-height: auto;
-  padding: 30px;
+.rateTitle a {
+  color: var(--primary);
 }
 
 .reviews {
-
+  overflow: hidden;
+  padding: 30px;
+  height: 100%;
 }
 
 @media screen and (max-width: 640px) {

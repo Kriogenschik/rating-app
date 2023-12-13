@@ -21,7 +21,7 @@ export const Products = ({
   
   return (
     <div className={cn(styles.products, className)} {...props}>
-      {sortedProducts && sortedProducts.map((p) => <Product product={p} key={p._id}/>)}
+      {sortedProducts && sortedProducts.map((p) => <Product layout product={p} key={p._id}/>)}
     </div>
   );
 };

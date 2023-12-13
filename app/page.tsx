@@ -9,8 +9,6 @@ export default async function Home(): Promise<JSX.Element> {
   return (
     <main>
       <Htag tag="h1">Text</Htag>
-      <PTag size="s">
-      </PTag>
       <Tag size="m" color="red" href="#">
         Lorem{" "}
       </Tag>

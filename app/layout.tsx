@@ -5,6 +5,7 @@ import { Header } from "./components/Header/Header";
 import { Footer } from "./components/Footer/Footer";
 import { Sidebar } from "./components/Sidebar/Sidebar";
 import styles from "./page.module.css";
+import { Up } from "@/components";
 
 const noto_sans = Noto_Sans({
   weight: ["300", "400", "500", "600", "700"],
@@ -31,6 +32,7 @@ export default function RootLayout({
           <Sidebar className={styles.sidebar} />
           <div className={styles.body}>{children}</div>
           <Footer className={styles.footer} />
+          <Up/>
         </div>
       </body>
     </html>

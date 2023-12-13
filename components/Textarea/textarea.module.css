@@ -9,8 +9,24 @@
   font-size: 16px;
   line-height: 22px;
   font-family: var(--font-family);
+  width: 100%;
 }
 
 .textarea::placeholder {
   color: #A4a4a4;
+}
+
+.error {
+  border: 1px solid var(--red);
+}
+
+.textareaWrapper {
+position: relative;
+}
+
+.errorMessage {
+position: absolute;
+bottom: -15px;
+left: 10px;
+color: var(--red);
 }
