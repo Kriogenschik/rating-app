@@ -30,7 +30,7 @@ export default function RootLayout({
         <div className={styles.wrapper}>
           <Header className={styles.header} />
           <Sidebar className={styles.sidebar} />
-          <div className={styles.body}>{children}</div>
+          <main className={styles.body} role="main">{children}</main>
           <Footer className={styles.footer} />
           <Up/>
         </div>

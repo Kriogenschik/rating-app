@@ -12,9 +12,9 @@ export const Menu = async (): Promise<JSX.Element> => {
 
   const buildFirstLevel = () => {
     return(
-      <>
+      <ul className={styles.firstLevelList}>
       {firstLevelMenu.map(m => (
-        <div key={m.route}>
+        <li key={m.route} aria-expanded={ m.id === firstCategory}>
           <Link href={`/${m.route}`}>
             <div className={cn(styles.firstLevel, {
               [styles.firstLevelActive]: m.id === firstCategory
@@ -24,15 +24,15 @@ export const Menu = async (): Promise<JSX.Element> => {
             </div>
           </Link>
           {m.id === firstCategory && <MenuSecondLevel menu={menu} menuItem={m}/>}
-        </div>
+        </li>
       ))}
-      </>
+      </ul>
     )
   }
 
   return (
-      <div className={styles.menu}>
+      <nav className={styles.menu} role="navigation">
         {buildFirstLevel()}
-      </div>
+      </nav>
   );
 };

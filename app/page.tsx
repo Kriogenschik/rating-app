@@ -1,9 +1,4 @@
-import { getMenu } from "@/api/menu";
 import { Button, Htag, PTag, Rating, Tag } from "@/components";
-import { MenuItem } from "@/interfaces/menu.iterface";
-import axios from "axios";
-import { GetStaticProps } from "next";
-import { API } from "./api";
 
 export default async function Home(): Promise<JSX.Element> {  
   return (

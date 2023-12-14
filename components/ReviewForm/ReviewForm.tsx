@@ -1,8 +1,6 @@
 "use client";
 import { ReviewFormProps } from "./ReviewForm.props";
 import cn from "classnames";
-import { format } from "date-fns";
-import { ru } from "date-fns/locale";
 
 import styles from "./ReviewForm.module.css";
 import { Input } from "../Input/Input";
@@ -16,6 +14,7 @@ import { useState } from "react";
 
 export const ReviewForm = ({
   productId,
+  isOpened,
   className,
   ...props
 }: ReviewFormProps): JSX.Element => {
@@ -25,6 +24,7 @@ export const ReviewForm = ({
     handleSubmit,
     formState: { errors },
     reset,
+    clearErrors,
   } = useForm<IReviewForm>();
 
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
@@ -58,6 +58,8 @@ export const ReviewForm = ({
           })}
           placeholder="Name"
           error={errors.name}
+          tabIndex={isOpened ? 0 : -1}
+          aria-invalid={errors.name ? true : false}
         />
         <Input
           {...register("title", {
@@ -66,6 +68,8 @@ export const ReviewForm = ({
           placeholder="Review title"
           className={styles.title}
           error={errors.title}
+          tabIndex={isOpened ? 0 : -1}
+          aria-invalid={errors.title ? true : false}
         />
         <div className={styles.rating}>
           <span>Rate:</span>
@@ -80,20 +84,24 @@ export const ReviewForm = ({
                 ref={field.ref}
                 setRating={field.onChange}
                 error={errors.rating}
+                tabIndex={isOpened ? 0 : -1}
               />
             )}
           />
         </div>
         <Textarea
           {...register("description", {
-            required: { value: true, message: "Type yur review" },
+            required: { value: true, message: "Type your review" },
           })}
           placeholder="Review text"
           className={styles.description}
           error={errors.description}
+          tabIndex={isOpened ? 0 : -1}
+          aria-label="text of review"
+          aria-invalid={errors.description ? true : false}
         />
         <div className={styles.submit}>
-          <Button appearance="primary">Send</Button>
+          <Button appearance="primary" tabIndex={isOpened ? 0 : -1} onClick={() => clearErrors()}>Send</Button>
           <span className={styles.info}>
             * Перед публикацией отзыв пройдет предварительную модерацию и
             проверку
@@ -101,16 +109,23 @@ export const ReviewForm = ({
         </div>
       </div>
       {isSuccess && (
-        <div className={styles.success}>
+        <div className={styles.success} role="alert">
           <div className={styles.successTitle}>Your review was sending</div>
           <div>Thank You! Your review will be published after checking</div>
-          <CloseIcon className={styles.close} onClick={() => setIsSuccess(false)}/>
+          <button className={styles.close} onClick={() => setIsSuccess(false)} aria-label="close confirm">
+            <CloseIcon
+          />
+          </button>
+          
         </div>
       )}
       {error && (
-        <div className={styles.error}>
+        <div className={styles.error} role="alert">
           {error}
-          <CloseIcon className={styles.close} onClick={() => setError('')}/>
+          <button className={styles.close} onClick={() => setError("")} aria-label="close alarm">
+            <CloseIcon
+          />
+          </button>
         </div>
       )}
     </form>

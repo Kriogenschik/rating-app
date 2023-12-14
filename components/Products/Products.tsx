@@ -1,27 +1,37 @@
-'use client'
+"use client";
 
-import { SortEnum, SortProps } from "./Products.props";
+import { SortProps } from "./Products.props";
 import cn from "classnames";
-import SortIcon from "./Sort.svg";
 
 import styles from "./Products.module.css";
 import { useReducer } from "react";
 import { sortReducer } from "@/page-components/TopPageComponent/sort.reducer";
 import { Product } from "../Product/Product";
+import { useReducedMotion } from "framer-motion";
 
 export const Products = ({
-  // sort,
-  // setSort,
   products,
   className,
   ...props
 }: SortProps): JSX.Element => {
-  const [{products: sortedProducts, sort}, dispatchSort] = useReducer(sortReducer, {products, sort: 0});
+  const [{ products: sortedProducts, sort }, dispatchSort] = useReducer(
+    sortReducer,
+    { products, sort: 0 }
+  );
 
-  
+  const shouldReduceMotion = useReducedMotion();
+
   return (
-    <div className={cn(styles.products, className)} {...props}>
-      {sortedProducts && sortedProducts.map((p) => <Product layout product={p} key={p._id}/>)}
+    <div className={cn(styles.products, className)} {...props} role="list">
+      {sortedProducts &&
+        sortedProducts.map((p) => (
+          <Product
+            layout={shouldReduceMotion ? false : true}
+            product={p}
+            key={p._id}
+            role="listItem"
+          />
+        ))}
     </div>
   );
 };

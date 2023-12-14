@@ -5,4 +5,5 @@ HTMLAttributes<HTMLDivElement>,
 HTMLDivElement
 > {
   productId: string;
+  isOpened: boolean;
 }
