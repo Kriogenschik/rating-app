@@ -1,7 +1,4 @@
-import { Card, Htag } from "..";
-import { priceDolars } from "@/helpers/helpers";
 import { AdventProps } from "./Advent.props";
-import cn from "classnames";
 import DoneIcon from "./done.svg";
 
 import styles from "./Advent.module.css";

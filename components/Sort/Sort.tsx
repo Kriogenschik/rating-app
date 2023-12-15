@@ -15,6 +15,7 @@ export const Sort = ({
   className,
   ...props
 }: SortProps): JSX.Element => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [{ products: sortedProducts, sort }, dispatchSort] = useReducer(
     sortReducer,
     { products, sort: SortEnum.Rating }
@@ -29,11 +30,13 @@ export const Sort = ({
       e.preventDefault();
       setSort(sort);
     }
-  }
+  };
 
   return (
     <div className={cn(styles.sort, className)} {...props}>
-      <div className={styles.sortName} id="sort">Sorting</div>
+      <div className={styles.sortName} id="sort">
+        Sorting
+      </div>
       <span
         id="rating"
         onClick={() => setSort(SortEnum.Rating)}
@@ -48,7 +51,7 @@ export const Sort = ({
         <SortIcon className={styles.sortIcon} /> By Rating
       </span>
       <span
-      id="price"
+        id="price"
         onClick={() => setSort(SortEnum.Price)}
         tabIndex={0}
         onKeyDown={(e) => handleKeyDown(e, SortEnum.Price)}

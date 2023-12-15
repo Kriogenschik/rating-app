@@ -7,9 +7,9 @@ export * from "./Card/Card";
 export * from "./Advent/Advent";
 export * from "./Input/Input";
 export * from "./Textarea/Textarea";
-export * from "./Search/Search"
+export * from "./Search/Search";
 export * from "./Product/Product";
 export * from "./Divider/Divider";
 export * from "./Review/Review";
 export * from "./ReviewForm/ReviewForm";
-export * from "./Up/Up"
+export * from "./Up/Up";

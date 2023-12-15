@@ -16,21 +16,21 @@ export const Header = ({ className, ...props }: HeaderProps): JSX.Element => {
 
   useEffect(() => {
     setIsopened(false);
-  }, [path])
+  }, [path]);
 
   const variants = {
     opened: {
       opacity: 1,
       x: 0,
       transition: {
-        stiffness: 20
-      }
+        stiffness: 20,
+      },
     },
     closed: {
       opacity: 0,
       x: "100%",
-    }
-  }
+    },
+  };
   return (
     <header className={cn(styles.header, className)} {...props}>
       <Logo />
@@ -39,7 +39,12 @@ export const Header = ({ className, ...props }: HeaderProps): JSX.Element => {
         icon="menu"
         onClick={() => setIsopened(true)}
       />
-      <motion.div className={styles.mobileMenu} variants={variants} initial={'closed'} animate={isOpened ? 'opened' : 'closed'}>
+      <motion.div
+        className={styles.mobileMenu}
+        variants={variants}
+        initial={"closed"}
+        animate={isOpened ? "opened" : "closed"}
+      >
         <Sidebar />
         <ButtonIcon
           className={styles.closeMenu}

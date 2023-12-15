@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-key */
+/* eslint-disable react/display-name */
 "use client";
 import { RatingProps } from "./Rating.props";
 import cn from "classnames";
@@ -33,6 +35,7 @@ export const Rating = forwardRef(
 
     useEffect(() => {
       constructRating(rating);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [rating, tabIndex]);
 
     const computeFocus = (r: number, i: number): number => {
@@ -52,7 +55,7 @@ export const Rating = forwardRef(
       const updatedArray = ratingArray.map((r: JSX.Element, i: number) => {
         return (
           <span
-            className={cn(styles.star, {
+            className={cn(styles.star, className, {
               [styles.filled]: i < currentRating,
               [styles.isEditable]: isEditable,
             })}

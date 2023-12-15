@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import { InputProps } from "./Input.props";
 import cn from "classnames";
 

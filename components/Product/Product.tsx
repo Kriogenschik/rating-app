@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable react/display-name */
 "use client";
 
 import { ProductProps } from "./Product.props";
@@ -65,7 +67,9 @@ export const Product = motion(
               <span className={styles.month}>month</span>
             </div>
             <div className={styles.rating}>
-            <span className="visually-hidden">rating + {product.reviewAvg ?? product.initialRating}</span>
+              <span className="visually-hidden">
+                rating + {product.reviewAvg ?? product.initialRating}
+              </span>
               <Rating rating={product.reviewAvg ?? product.initialRating} />
             </div>
             <div className={styles.tags}>

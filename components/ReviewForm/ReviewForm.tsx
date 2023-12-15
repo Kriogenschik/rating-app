@@ -32,7 +32,7 @@ export const ReviewForm = ({
 
   const onSubmit = async (formData: IReviewForm) => {
     try {
-      console.log({ ...formData });
+      console.log({ ...formData, productId });
       if (
         formData.name &&
         formData.title &&
@@ -44,6 +44,7 @@ export const ReviewForm = ({
       } else {
         setError("Something Going wrong...");
       }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (e: any) {
       setError(e.message);
     }

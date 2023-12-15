@@ -9,7 +9,7 @@ import cn from "classnames";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { KeyboardEvent, useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 
 interface MenuSecondLevelProps {
   menu: MenuItem[];

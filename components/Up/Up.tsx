@@ -1,33 +1,39 @@
-'use client'
+"use client";
 
 import { useScrollY } from "@/hooks/useScrollY";
-import ArrowIcon from "./arrow.svg"
-
-import styles from './Up.module.css'
+import styles from "./Up.module.css";
 import { motion, useAnimation } from "framer-motion";
 import { useEffect } from "react";
 import { ButtonIcon } from "../ButtonIcon/ButtonIcon";
 
 export const Up = (): JSX.Element => {
-
   const controls = useAnimation();
 
   const y = useScrollY();
 
   useEffect(() => {
-    controls.start({opacity: y / document.body.scrollHeight});
+    controls.start({ opacity: y / document.body.scrollHeight });
   }, [y, controls]);
 
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth"
-    })
-  }
+      behavior: "smooth",
+    });
+  };
 
   return (
-    <motion.div animate={controls} initial={{opacity: 0}} className={styles.up}>
-      <ButtonIcon aria-label="to up"  appearance='primary' icon='arrow' onClick={scrollToTop}/>
+    <motion.div
+      animate={controls}
+      initial={{ opacity: 0 }}
+      className={styles.up}
+    >
+      <ButtonIcon
+        aria-label="to up"
+        appearance="primary"
+        icon="arrow"
+        onClick={scrollToTop}
+      />
     </motion.div>
-  )
+  );
 };

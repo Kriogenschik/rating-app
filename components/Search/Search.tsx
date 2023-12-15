@@ -3,12 +3,11 @@
 import cn from "classnames";
 
 import styles from "./Search.module.css";
-import { useState } from "react";
+import { KeyboardEvent, useState } from "react";
 import SearchIcon from "./search.svg";
 import { SearchProps } from "./Search.props";
 import { Button } from "../Button/Button";
 import { Input } from "../Input/Input";
-import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 
 export const Search = ({ className, ...props }: SearchProps): JSX.Element => {
@@ -19,11 +18,11 @@ export const Search = ({ className, ...props }: SearchProps): JSX.Element => {
     router.push("/search" + "?q=" + search);
   };
 
-  const handleKeyDown = (e: KeyboardEvent) => {
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       goToSearch();
     }
-  }
+  };
   return (
     <form className={cn(className, styles.search)} {...props} role="search">
       <Input
@@ -31,7 +30,7 @@ export const Search = ({ className, ...props }: SearchProps): JSX.Element => {
         placeholder="Search..."
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        onKeyDown={(e) => handleKeyDown}
+        onKeyDown={(e) => handleKeyDown(e)}
       />
       <Button
         appearance="primary"
