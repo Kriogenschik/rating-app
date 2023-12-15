@@ -17,7 +17,7 @@ interface MenuSecondLevelProps {
 }
 
 export const MenuSecondLevel = ({ menu, menuItem }: MenuSecondLevelProps) => {
-  const shouldReduceMotion = useReducedMotion();
+  // const shouldReduceMotion = useReducedMotion();
   const pathname = usePathname();
   const [menuState, setMenuState] = useState<MenuItem[]>(menu);
   const [announce, setAnnounce] = useState<"closed" | "opened" | undefined>();
@@ -25,9 +25,7 @@ export const MenuSecondLevel = ({ menu, menuItem }: MenuSecondLevelProps) => {
   const variants = {
     visible: {
       marginBottom: 20,
-      transition: shouldReduceMotion
-        ? {}
-        : {
+      transition: {
             when: "beforeChildren",
             staggerChildren: 0.1,
           },

@@ -1,3 +1,34 @@
+// import { getMenu } from "@/api/menu";
+// import { getPage } from "@/api/page";
+// import { getProduct } from "@/api/products";
+// import { firstLevelMenu } from "@/helpers/helpers";
+// import { TopLevelCategory, TopPageModel } from "@/interfaces/page.interface";
+// import { ProductModel } from "@/interfaces/product.interface";
+// import { TopPageComponent } from "@/page-components";
+// import { GetStaticPaths, Metadata } from "next";
+
+// export async function generateMetadata({
+//   params,
+// }: {
+//   params: { alias: string };
+// }): Promise<Metadata> {
+//   const page = await getPage(params.alias);
+//   if (page) {
+//     return {
+//       title: page[0].metaTitle,
+//       applicationName: page[0].metaDescription,
+//       // openGraph: {
+//       //   title: page?.[0].metaTitle,
+//       //   description: page[0].metaDescription,
+//       //   type: "article"
+//       // },
+//     };
+//   } else {
+//     return {
+//       title: "page not found"
+//     }
+//   }
+// }
 import { getMenu } from "@/api/menu";
 import { getPage } from "@/api/page";
 import { getProduct } from "@/api/products";
